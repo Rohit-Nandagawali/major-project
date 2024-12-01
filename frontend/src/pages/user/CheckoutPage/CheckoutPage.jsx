@@ -130,33 +130,12 @@ export default function CheckoutPage() {
 
                     window.location.href = response.url
 
-                    // if (response.data.msg == "OK" && response.data.status == 200) {
-                    //     const orderCreatedResponce = await createOrder(order)
-
-
-                    //     toast({
-                    //         title: "Order Created Successfully",
-                    //         description: "Your order has been placed successfully.",
-                    //     })
-                    // }
 
 
                 } catch (error) {
                     console.log("error in payment", error)
                 }
-                // console.log(paymentData);
 
-                // making payment request
-                // if success create order 
-                //  window.location.href = response.data.url
-                // cancle payment- contact page
-
-                // const response = await createOrder(order)
-                // toast({
-                //     title: "Order Created Successfully",
-                //     description: "Your order has been placed successfully.",
-                // })
-                // navigate(`/confirmedOrdered/${order.orderId}`)
             } catch (error) {
                 console.log(error);
 

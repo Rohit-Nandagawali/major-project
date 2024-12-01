@@ -19,6 +19,7 @@ import { getAllProducts } from '@/services/apis/products'
 import { listUsers } from '@/services/apis/admin'
 import { getAllMessages } from '@/services/apis/message'
 import { getAllCoupons } from '@/services/apis/coupons'
+import { AdminAnalytics } from './AdminAnalytics'
 
 function AdminOverview() {
     const [orders, setOrders] = useState([])
@@ -169,6 +170,8 @@ function AdminOverview() {
                 </Card>
             </div>
 
+
+
             {/* Recent Activities */}
             <Card>
                 <CardHeader>
@@ -206,6 +209,10 @@ function AdminOverview() {
                     </ul>
                 </CardContent>
             </Card>
+
+
+            <AdminAnalytics orders={orders} />
+
         </div>
     )
 }
