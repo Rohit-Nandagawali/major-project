@@ -157,7 +157,7 @@ export default function DiscountCouponsMgt() {
                             <div className="mb-4">
                                 <Dialog>
                                     <DialogTrigger asChild>
-                                        <Button>
+                                        <Button variant="flat" color="warning">
                                             <Plus className="mr-2 h-4 w-4" /> Add New Coupons code
                                         </Button>
                                     </DialogTrigger>
@@ -342,7 +342,7 @@ export default function DiscountCouponsMgt() {
                             <div className="mb-4">
                                 <Dialog>
                                     <DialogTrigger asChild>
-                                        <Button>
+                                        <Button variant="flat" color="warning">
                                             <Plus className="mr-2 h-4 w-4" /> Add New Offer
                                         </Button>
                                     </DialogTrigger>

@@ -139,7 +139,7 @@ export default function UserMgt() {
             <div className="flex justify-between">
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button>
+                        <Button variant="flat" color="warning">
                             <UserPlus className="mr-2 h-4 w-4" /> Add User
                         </Button>
                     </DialogTrigger>

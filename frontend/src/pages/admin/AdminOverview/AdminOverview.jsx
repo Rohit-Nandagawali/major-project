@@ -107,8 +107,8 @@ function AdminOverview() {
     }
 
     return (
-        <div className="space-y-4 px-24 py-12 font-Montserrat">
-            <h2 className="text-2xl font-bold">Dashboard Overview</h2>
+        <div className="container mx-auto px-4 py-8  overflow-y-scroll max-h-screen space-y-4">
+            <h2 className="text-3xl font-bold">Dashboard Overview</h2>
 
             {/* Key Statistics */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -122,7 +122,8 @@ function AdminOverview() {
                     <CardContent>
                         <div className="text-2xl font-bold">₹{calculateTotalRevenue().toFixed(2)}</div>
                         <p className="text-xs text-muted-foreground">
-                            +20.1% from last month
+                            {/* +20.1% from last month */}
+                            Your earning so far
                         </p>
                     </CardContent>
                 </Card>

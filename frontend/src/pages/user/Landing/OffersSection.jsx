@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 import { getAllOffers } from '@/services/apis/offers'
 import { toast } from '@/hooks/use-toast'
@@ -16,7 +15,14 @@ function OffersSection() {
     const fetchOffers = async () => {
         try {
             const fetchedOffers = await getAllOffers()
-            setOffers(fetchedOffers)
+            console.log(fetchedOffers)
+            // Filter out expired offers
+            const currentDate = new Date()
+            const validOffers = fetchedOffers.filter(offer => {
+                const expiryDate = new Date(offer.expiryDate)
+                return expiryDate > currentDate
+            })
+            setOffers(validOffers)
         } catch (error) {
             console.error("Error fetching offers:", error)
             toast({
@@ -48,13 +54,12 @@ function OffersSection() {
                         className="w-full h-auto object-cover transition-transform duration-300 ease-in-out transform scale-105 opacity-80"
                     />
                     {/* Shine effect div */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent  animate-shine"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-shine"></div>
                 </NavLink>
             ))}
-
-        </div >
-
+        </div>
     )
 }
 
 export default OffersSection
+

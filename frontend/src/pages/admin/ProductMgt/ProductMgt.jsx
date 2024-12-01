@@ -29,9 +29,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Search, Plus, Pencil, Trash2 } from "lucide-react"
+import { Search, Plus, Pencil, Trash2, X } from "lucide-react"
 import { Button } from "@nextui-org/button"
-import { Input, Textarea } from "@nextui-org/react"
+import { Image, Input, Textarea } from "@nextui-org/react"
 import { createProduct, getAllProducts, updateProduct, deleteProduct } from "@/services/apis/products"
 import { createCategory, getAllCategories, deleteCategory } from "@/services/apis/categories"
 
@@ -170,7 +170,7 @@ export default function ProductMgt() {
                             </Select>
                             <Dialog>
                                 <DialogTrigger asChild>
-                                    <Button>
+                                    <Button variant="flat" color="warning">
                                         <Plus className="mr-2 h-4 w-4" /> Add Product
                                     </Button>
                                 </DialogTrigger>
@@ -402,8 +402,8 @@ export default function ProductMgt() {
                             <CardDescription>Add or remove product categories</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div className="space-y-2 mb-4">
-                                <div className="flex space-x-2">
+                            <div className="space-y-2 mb-5">
+                                <div className="grid grid-cols-[1fr_1fr_.3fr] gap-2">
                                     <Input
                                         placeholder="New category name"
                                         value={newCategory.name}
@@ -413,24 +413,40 @@ export default function ProductMgt() {
                                         type="file"
                                         onChange={(e) => handleFileChange(e, setNewCategory)}
                                     />
+                                    <Button variant="flat" color="warning" onClick={handleAddCategory}>Add Category</Button>
                                 </div>
-                                <Button onClick={handleAddCategory}>Add Category</Button>
                             </div>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 ">
                                 {categories.map((category) => (
-                                    <Badge key={category._id} variant="secondary">
-                                        {category.name}
+                                    <div
+                                        key={category._id}
+                                        className="relative p-4 rounded-xl cursor-pointer bg-bsecondary/5 hover:bg-bsecondary/10 h-28 w-28 flex flex-col items-center justify-between"
+                                    >
                                         <Button
-                                            variant="ghost"
-                                            size="sm"
-                                            className="ml-2 h-4 w-4 p-0"
-                                            onClick={() => handleDeleteCategory(category._id)}
+                                            isIconOnly
+                                            color="danger"
+                                            variant="flat"
+                                            className="absolute -top-3 -right-3  z-10"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDeleteCategory(category._id);
+                                            }}
                                         >
-                                            <Trash2 className="h-3 w-3" />
+                                            <Trash2 className="h-4 w-4" />
                                         </Button>
-                                    </Badge>
+                                        <Image
+                                            isBlurred
+                                            className="rounded-lg aspect-square z-0"
+                                            src={category.imgURL}
+                                            alt={category.name}
+                                            height={60}
+                                            width={60}
+                                        />
+                                        <p className="font-semibold text-bsecondary">{category.name}</p>
+                                    </div>
                                 ))}
                             </div>
+
                         </CardContent>
                     </Card>
                 </TabsContent>

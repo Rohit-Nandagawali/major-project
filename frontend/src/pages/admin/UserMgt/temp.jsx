@@ -204,7 +204,7 @@ export default function UserMgt() {
                                         </div>
                                     </div>
                                     <DialogFooter>
-                                        <Button type="submit" onClick={newUser.role === 'delivery' ? handleCreateDeliveryBoy : handleAddUser}>
+                                        <Button variant="flat" color="warning" type="submit" onClick={newUser.role === 'delivery' ? handleCreateDeliveryBoy : handleAddUser}>
                                             {newUser.role === 'delivery' ? 'Create Delivery Boy' : 'Add User'}
                                         </Button>
                                     </DialogFooter>
